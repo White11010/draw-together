@@ -9,15 +9,30 @@ import { IDrawParams } from "../drawer-service/drawew-service.model";
 export class GameService implements IGameService {
   private drawerService: DrawerService;
   private apiService: IApiService;
+  private colorPallete: HTMLElement;
 
-  constructor(drawerService: DrawerService, apiService: IApiService) {
+  constructor(
+    drawerService: DrawerService,
+    apiService: IApiService,
+    colorPallete: HTMLElement
+  ) {
     this.drawerService = drawerService;
     this.apiService = apiService;
+    this.colorPallete = colorPallete;
   }
 
   public init(): void {
     this.initDrawerService();
     this.initApiService();
+
+    this.colorPallete.querySelectorAll("div").forEach(palleteItem => {
+      palleteItem.addEventListener("click", () => {
+        const color = window
+          .getComputedStyle(palleteItem)
+          .getPropertyValue("background-color");
+        this.drawerService.setLineColor(color);
+      });
+    });
   }
 
   private initApiService(): void {

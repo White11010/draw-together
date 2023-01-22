@@ -11,10 +11,12 @@ window.onload = () => {
 
   document.getElementById("app")!.appendChild(canvas);
 
+  const colorPallete: HTMLElement = document.getElementById("color-pallete")!;
+
   const drawerService = new DrawerService(canvas);
   const apiService = new ApiService("http://localhost:8000");
 
-  const gameService = new GameService(drawerService, apiService);
+  const gameService = new GameService(drawerService, apiService, colorPallete);
 
   gameService.init();
 };

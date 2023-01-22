@@ -40,6 +40,10 @@ export class DrawerService implements IDrawerService {
     this.canvas.addEventListener(event as any, handler);
   }
 
+  public setLineColor(color: string) {
+    this.context.strokeStyle = color;
+  }
+
   private setDefaultConfig(): void {
     this.context.lineWidth = 5;
     this.context.lineCap = "round";

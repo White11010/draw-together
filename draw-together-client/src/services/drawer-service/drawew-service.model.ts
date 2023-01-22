@@ -8,6 +8,7 @@ export interface IDrawParams {
 export interface IDrawerService {
   init: () => void;
   draw: (drawConfig: IDrawParams) => void;
+  setLineColor: (color: string) => void,
   setCanvasEventListener: (
     event: EDrawEventType,
     handler: (event: MouseEvent) => void
